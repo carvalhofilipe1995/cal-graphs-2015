@@ -8,6 +8,7 @@
 #include "Sightseeing.h"
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ Sightseeing::Sightseeing() {
 	fstream pol;
 	fstream turistas;
 
-	pols.open("pols.txt");
+	pol.open("pols.txt");
 	turistas.open("turistas.txt");
 
 	if (pol.is_open()) {
@@ -24,15 +25,15 @@ Sightseeing::Sightseeing() {
 		while (!pol.eof()) {
 
 			string x;
-			getline(pols, x);
+			getline(pol, x);
 			int xCoord = stoi(x);
 
 			string y;
-			getline(pols, y);
+			getline(pol, y);
 			int yCoord = stoi(y);
 
 			string nome;
-			getline(pols, nome);
+			getline(pol, nome);
 
 			Pol p = Pol(xCoord, yCoord, nome);
 

@@ -2,6 +2,8 @@
 #define TURISTA_H_
 
 #include <vector>
+#include "Pol.h"
+#include "Pessoa.h"
 
 using namespace std;
 
@@ -19,7 +21,7 @@ public:
 	void removePol(string nome) {
 		for(int i = 0; i <pols.size(); i++)
 			if(pols[i].getNome() == nome){
-				pols.remove(i);
+				pols.erase(pols.begin() + i);
 			}
 	};
 

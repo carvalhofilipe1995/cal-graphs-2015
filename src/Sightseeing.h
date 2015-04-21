@@ -1,6 +1,10 @@
 #ifndef SIGHTSEEING_H_
 #define SIGHTSEEING_H_
 
+#include <vector>
+#include "Turista.h"
+#include "Pol.h"
+
 using namespace std;
 
 class Sightseeing {

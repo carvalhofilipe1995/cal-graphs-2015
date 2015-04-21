@@ -1,6 +1,8 @@
 #ifndef POL_H_
 #define POL_H_
 
+#include <string>
+
 using namespace std;
 
 class Pol {

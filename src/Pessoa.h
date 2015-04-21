@@ -1,6 +1,8 @@
 #ifndef PESSOA_H_
 #define PESSOA_H_
 
+#include <string>
+
 using namespace std;
 
 class Pessoa {
