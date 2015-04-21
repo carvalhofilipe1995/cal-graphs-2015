@@ -13,7 +13,7 @@ public:
 	Pol(int x, int y, string nome) : x(x), y(y), nome(nome){};
 	int getX() {return x;};
 	int getY() {return y;};
-	string getNome() { return nome;};
+	string getNome() {return nome;};
 
 };
 
