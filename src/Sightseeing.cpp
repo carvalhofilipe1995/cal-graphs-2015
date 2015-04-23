@@ -1,14 +1,4 @@
-/*
- * Sightseeing.cpp
- *
- *  Created on: Apr 21, 2015
- *      Author: luiscarvalho
- */
-
 #include "Sightseeing.h"
-#include <fstream>
-#include <sstream>
-#include <iostream>
 
 using namespace std;
 
@@ -35,7 +25,7 @@ Sightseeing::Sightseeing() {
 			string nome;
 			getline(pol, nome);
 
-			Pol p = Pol(xCoord, yCoord, nome);
+			Pol *p =  new Pol(xCoord, yCoord, nome);
 
 			pols.push_back(p);
 
@@ -69,7 +59,7 @@ Sightseeing::Sightseeing() {
 
 			for (int i = 0, j = 2; i < pols.size() && j < toRead.size();
 					i++, j++)
-				if (pols.at(i).getNome() == toRead[j])
+				if (pols.at(i)->getNome() == toRead[j])
 					t.addPol(pols.at(i));
 
 		}
@@ -80,3 +70,4 @@ Sightseeing::Sightseeing() {
 	}
 
 }
+

@@ -12,6 +12,13 @@ public:
 	Pessoa(string nome, int id): nome(nome), idade(id) {};
 	string getNome() { return nome;};
 	int getIdade() { return idade;};
+
+	bool operator== (Pessoa& p){
+		if(nome == p.getNome() && idade == p.getIdade())
+			return true;
+		return false;
+	};
+
 };
 
 
