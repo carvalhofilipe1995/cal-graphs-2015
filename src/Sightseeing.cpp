@@ -4,28 +4,28 @@ using namespace std;
 
 Sightseeing::Sightseeing() {
 
-	fstream pol;
-	fstream turistas;
+	fstream polFile;
+	fstream turistasFile;
 
-	pol.open("pols.txt");
-	turistas.open("turistas.txt");
+	polFile.open("pols.txt");
+	turistasFile.open("turistas.txt");
 
-	if (pol.is_open()) {
+	if (polFile.is_open()) {
 
-		while (!pol.eof()) {
+		while (!polFile.eof()) {
 
 			string x;
-			getline(pol, x);
-			int xCoord = stoi(x);
+			getline(polFile, x);
+			int xCoord = atoi(x.c_str());
 
 			string y;
-			getline(pol, y);
-			int yCoord = stoi(y);
+			getline(polFile, y);
+			int yCoord = atoi(y.c_str());
 
 			string nome;
-			getline(pol, nome);
+			getline(polFile, nome);
 
-			Pol *p =  new Pol(xCoord, yCoord, nome);
+			Pol *p = new Pol(xCoord, yCoord, nome);
 
 			pols.push_back(p);
 
@@ -36,14 +36,15 @@ Sightseeing::Sightseeing() {
 		cout << "Error Loading: pols.txt \n";
 	}
 
-	if (turistas.is_open()) {
+	if (turistasFile.is_open()) {
 
-		while (!turistas.eof()) {
+		while (!turistasFile.eof()) {
 
 			string line;
-			getline(turistas, line);
+			getline(turistasFile, line);
 			istringstream ss(line);
 			vector<string> toRead;
+
 
 			while (ss) {
 				string s;
@@ -55,12 +56,13 @@ Sightseeing::Sightseeing() {
 
 			}
 
-			Turista t = Turista(toRead[0], stoi(toRead[1]));
+			Turista *t = new Turista(toRead[0], atoi(toRead[1].c_str()));
+			turistas.push_back(t);
 
-			for (int i = 0, j = 2; i < pols.size() && j < toRead.size();
-					i++, j++)
-				if (pols.at(i)->getNome() == toRead[j])
-					t.addPol(pols.at(i));
+			for (int i = 0; i < pols.size(); i++)
+				for (int j = 2; j < toRead.size(); j++)
+					if (pols.at(i)->getNome() == toRead[j])
+						t->addPol(pols.at(i));
 
 		}
 
@@ -68,6 +70,5 @@ Sightseeing::Sightseeing() {
 		// error loading the file
 		cout << "Error Loading: turistas.txt \n";
 	}
-
 }
 

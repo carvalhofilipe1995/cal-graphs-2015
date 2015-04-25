@@ -31,7 +31,8 @@ public:
 		if(getNome() == t.getNome() && getIdade() == t.getIdade())
 			return true;
 		return false;
-	}
+	};
+
 
 };
 

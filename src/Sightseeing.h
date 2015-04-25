@@ -21,6 +21,8 @@ public:
 	Sightseeing();
 	vector<Turista*> getTuristas() {return turistas;};
 	vector<Pol*> getPols() {return pols;};
+	void addTurista(Turista *t) {turistas.push_back(t);};
+	void addPol(Pol *p) { pols.push_back(p);};
 
 
 };
