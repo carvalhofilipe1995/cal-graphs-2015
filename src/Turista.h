@@ -10,19 +10,19 @@
 using namespace std;
 
 class Turista: public Pessoa {
-	vector<Pol *> pols;
+	vector<Pol> pols;
 
 
 public:
 	Turista(string nome, int idade) : Pessoa(nome,idade) {};
 
-	vector<Pol *> getPols() {return pols;};
+	vector<Pol> getPols() {return pols;};
 
-	void addPol(Pol *p) {pols.push_back(p);};
+	void addPol(Pol p) {pols.push_back(p);};
 
 	void removePol(string nome) {
 		for(int i = 0; i <pols.size(); i++)
-			if(pols[i]->getNome() == nome){
+			if(pols[i].getNome() == nome){
 				pols.erase(pols.begin() + i);
 			}
 	};

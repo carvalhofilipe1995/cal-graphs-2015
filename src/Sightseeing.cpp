@@ -25,7 +25,7 @@ Sightseeing::Sightseeing() {
 			string nome;
 			getline(polFile, nome);
 
-			Pol *p = new Pol(xCoord, yCoord, nome);
+			Pol p = Pol(xCoord, yCoord, nome);
 
 			pols.push_back(p);
 
@@ -56,13 +56,13 @@ Sightseeing::Sightseeing() {
 
 			}
 
-			Turista *t = new Turista(toRead[0], atoi(toRead[1].c_str()));
+			Turista t = Turista(toRead[0], atoi(toRead[1].c_str()));
 			turistas.push_back(t);
 
 			for (int i = 0; i < pols.size(); i++)
 				for (int j = 2; j < toRead.size(); j++)
-					if (pols.at(i)->getNome() == toRead[j])
-						t->addPol(pols.at(i));
+					if (pols.at(i).getNome() == toRead[j])
+						t.addPol(pols.at(i));
 
 		}
 
@@ -70,5 +70,21 @@ Sightseeing::Sightseeing() {
 		// error loading the file
 		cout << "Error Loading: turistas.txt \n";
 	}
+}
+
+
+bool Sightseeing::startGraph(){
+
+	for(int i = 0; i < pols.size(); i++)
+		graph.addVertex(pols.at(i));
+
+	vector<Vertex<Pol> *> v = graph.getVertexSet();
+
+	for(int i = 0; i < graph.getVertexSet().size(); i++){
+		for(int j = i + 1; j < v.size(); j++){
+			graph.addEdge(v.at(i)->getInfo(),v.at(j)->getInfo(),0.0,0.0);
+		}
+	}
+
 }
 

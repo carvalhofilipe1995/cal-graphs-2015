@@ -25,7 +25,7 @@ void printMenu() {
 
 }
 
-Turista* addNewTouristInterface() {
+Turista addNewTouristInterface() {
 
 	string name, id;
 
@@ -51,12 +51,12 @@ Turista* addNewTouristInterface() {
 		// error
 		cout << "Error Loading: turistas.txt" << endl;
 
-	Turista *t = new Turista(name, idade);
+	Turista t = Turista(name, idade);
 
 	return t;
 }
 
-Pol* addNewPolInterface() {
+Pol addNewPolInterface() {
 
 	int xCoord, yCoord;
 	string nome, x, y;
@@ -87,13 +87,13 @@ Pol* addNewPolInterface() {
 		// error
 		cout << "Error Loading: pols.txt" << endl;
 
-	Pol* p = new Pol(xCoord, yCoord, nome);
+	Pol p = Pol(xCoord, yCoord, nome);
 
 	return p;
 
 }
 
-void printTuristas(vector<Turista *> t) {
+void printTuristas(vector<Turista> t) {
 
 	string option;
 
@@ -101,14 +101,14 @@ void printTuristas(vector<Turista *> t) {
 	cout << endl;
 
 	for (int i = 0; i < t.size(); i++) {
-		cout << "Name: " << t.at(i)->getNome() << endl;
-		cout << "Age: " << t.at(i)->getIdade() << endl;
+		cout << "Name: " << t.at(i).getNome() << endl;
+		cout << "Age: " << t.at(i).getIdade() << endl;
 
-		vector<Pol *> p = t.at(i)->getPols();
+		vector<Pol> p = t.at(i).getPols();
 
 		for (int j = 0; j < p.size(); j++) {
-			cout << p.at(j)->getNome() << ", X = " << p.at(j)->getX()
-					<< " , Y =" << p.at(j)->getY() << endl;
+			cout << p.at(j).getNome() << ", X = " << p.at(j).getX()
+					<< " , Y =" << p.at(j).getY() << endl;
 		}
 		cout << endl;
 	}
@@ -122,7 +122,7 @@ void printTuristas(vector<Turista *> t) {
 
 }
 
-void printPols(vector<Pol*> p) {
+void printPols(vector<Pol> p) {
 
 	string option;
 
@@ -130,8 +130,8 @@ void printPols(vector<Pol*> p) {
 	cout << endl;
 
 	for (int i = 0; i < p.size(); i++) {
-		cout << p.at(i)->getNome() << ", X = " << p.at(i)->getX() << ", Y = "
-				<< p.at(i)->getY() << endl;
+		cout << p.at(i).getNome() << ", X = " << p.at(i).getX() << ", Y = "
+				<< p.at(i).getY() << endl;
 	}
 
 	cout << endl;
