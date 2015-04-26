@@ -83,14 +83,4 @@ Sightseeing::Sightseeing() {
 	}
 }
 
-bool Sightseeing::startGraph() {
 
-
-	return true;
-}
-
-
-bool Sightseeing::showGraph(){
-
-	return true;
-}

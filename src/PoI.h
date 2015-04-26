@@ -24,6 +24,7 @@ public:
 		this->nome = nome;
 		this->point = p;
 	};
+	double distMinima(PoI p);
 	string getNome() const;
 	double getX() const;
 	double getY() const;
