@@ -1,7 +1,7 @@
 #ifndef TURISTA_H_
 #define TURISTA_H_
 
-#include "Pol.h"
+#include "PoI.h"
 #include "Pessoa.h"
 #include <iostream>
 #include <vector>
@@ -10,20 +10,20 @@
 using namespace std;
 
 class Turista: public Pessoa {
-	vector<Pol> pols;
+	vector<PoI> poIs;
 
 
 public:
 	Turista(string nome, int idade) : Pessoa(nome,idade) {};
 
-	vector<Pol> getPols() {return pols;};
+	vector<PoI> getPols() {return poIs;};
 
-	void addPol(Pol p) {pols.push_back(p);};
+	void addPoI(PoI p) {poIs.push_back(p);};
 
-	void removePol(string nome) {
-		for(int i = 0; i <pols.size(); i++)
-			if(pols[i].getNome() == nome){
-				pols.erase(pols.begin() + i);
+	void removePoI(string nome) {
+		for(int i = 0; i <poIs.size(); i++)
+			if(poIs[i].getNome() == nome){
+				poIs.erase(poIs.begin() + i);
 			}
 	};
 

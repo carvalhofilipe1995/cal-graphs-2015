@@ -25,9 +25,9 @@ Sightseeing::Sightseeing() {
 			string nome;
 			getline(polFile, nome);
 
-			Pol p = Pol(xCoord, yCoord, nome);
+			PoI p = PoI(xCoord, yCoord, nome);
 
-			pols.push_back(p);
+			poIs.push_back(p);
 
 		}
 
@@ -59,10 +59,10 @@ Sightseeing::Sightseeing() {
 			Turista t = Turista(toRead[0], atoi(toRead[1].c_str()));
 			turistas.push_back(t);
 
-			for (int i = 0; i < pols.size(); i++)
+			for (int i = 0; i < poIs.size(); i++)
 				for (int j = 2; j < toRead.size(); j++)
-					if (pols.at(i).getNome() == toRead[j])
-						t.addPol(pols.at(i));
+					if (poIs.at(i).getNome() == toRead[j])
+						t.addPoI(poIs.at(i));
 
 		}
 
@@ -75,10 +75,10 @@ Sightseeing::Sightseeing() {
 
 bool Sightseeing::startGraph(){
 
-	for(int i = 0; i < pols.size(); i++)
-		graph.addVertex(pols.at(i));
+	for(int i = 0; i < poIs.size(); i++)
+		graph.addVertex(poIs.at(i));
 
-	vector<Vertex<Pol> *> v = graph.getVertexSet();
+	vector<Vertex<PoI> *> v = graph.getVertexSet();
 
 	for(int i = 0; i < graph.getVertexSet().size(); i++){
 		for(int j = i + 1; j < v.size(); j++){

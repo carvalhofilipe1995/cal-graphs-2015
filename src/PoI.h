@@ -1,23 +1,22 @@
-#ifndef POL_H_
-#define POL_H_
+#ifndef POI_H_
+#define POI_H_
 
 #include <string>
-#include <iostream>
 
 using namespace std;
 
-class Pol {
+class PoI {
 	int x;
 	int y;
 	string nome;
 public:
 
-	Pol(int x, int y, string nome) : x(x), y(y), nome(nome){};
+	PoI(int x, int y, string nome) : x(x), y(y), nome(nome){};
 	int getX() {return x;};
 	int getY() {return y;};
 	string getNome() {return nome;};
 
-	bool operator==(Pol& p){
+	bool operator==(PoI& p){
 		if(x == p.getX() && y == p.getY())
 			return true;
 		return false;
@@ -27,4 +26,4 @@ public:
 
 
 
-#endif /* POL_H_ */
+#endif /* POI_H_ */
