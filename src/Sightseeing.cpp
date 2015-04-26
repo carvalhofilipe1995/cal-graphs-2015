@@ -1,3 +1,10 @@
+/*
+ * Sightseeing.cpp
+ *
+ *  Created on: Apr 26, 2015
+ *      Author: luiscarvalho
+ */
+
 #include "Sightseeing.h"
 
 using namespace std;
@@ -6,6 +13,7 @@ Sightseeing::Sightseeing() {
 
 	fstream polFile;
 	fstream turistasFile;
+
 
 	polFile.open("pols.txt");
 	turistasFile.open("turistas.txt");
@@ -25,9 +33,11 @@ Sightseeing::Sightseeing() {
 			string nome;
 			getline(polFile, nome);
 
-			PoI p = PoI(xCoord, yCoord, nome);
+			Point p = Point(xCoord, yCoord);
 
-			poIs.push_back(p);
+			PoI poI = PoI(nome, p);
+
+			interestPoints.push_back(poI);
 
 		}
 
@@ -45,7 +55,6 @@ Sightseeing::Sightseeing() {
 			istringstream ss(line);
 			vector<string> toRead;
 
-
 			while (ss) {
 				string s;
 
@@ -56,13 +65,15 @@ Sightseeing::Sightseeing() {
 
 			}
 
-			Turista t = Turista(toRead[0], atoi(toRead[1].c_str()));
-			turistas.push_back(t);
+			int age = atoi(toRead[1].c_str());
 
-			for (int i = 0; i < poIs.size(); i++)
+			Tourist t = Tourist(toRead[0], age);
+			tourists.push_back(t);
+
+			for (int i = 0; i < interestPoints.size(); i++)
 				for (int j = 2; j < toRead.size(); j++)
-					if (poIs.at(i).getNome() == toRead[j])
-						t.addPoI(poIs.at(i));
+					if (tourists.at(i).getNome() == toRead[j])
+						t.addPoI(interestPoints.at(i));
 
 		}
 
@@ -72,19 +83,14 @@ Sightseeing::Sightseeing() {
 	}
 }
 
+bool Sightseeing::startGraph() {
 
-bool Sightseeing::startGraph(){
 
-	for(int i = 0; i < poIs.size(); i++)
-		graph.addVertex(poIs.at(i));
-
-	vector<Vertex<PoI> *> v = graph.getVertexSet();
-
-	for(int i = 0; i < graph.getVertexSet().size(); i++){
-		for(int j = i + 1; j < v.size(); j++){
-			graph.addEdge(v.at(i)->getInfo(),v.at(j)->getInfo(),0.0,0.0);
-		}
-	}
-
+	return true;
 }
 
+
+bool Sightseeing::showGraph(){
+
+	return true;
+}

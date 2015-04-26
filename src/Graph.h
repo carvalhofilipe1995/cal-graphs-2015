@@ -66,7 +66,7 @@ struct vertex_greater_than {
 
 template<class T>
 bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
-	d->indegree--; //adicionado do exercicio 5
+	d->indegree--;
 	typename vector<Edge<T> >::iterator it = adj.begin();
 	typename vector<Edge<T> >::iterator ite = adj.end();
 	while (it != ite) {
@@ -79,7 +79,7 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
 	return false;
 }
 
-//atualizado pelo exerc���cio 5
+
 template<class T>
 Vertex<T>::Vertex(T in) :
 		info(in), visited(false), processing(false), indegree(0), dist(0) {
@@ -199,13 +199,13 @@ class Graph {
 	vector<Vertex<T> *> vertexSet;
 	void dfs(Vertex<T> *v, vector<T> &res) const;
 
-	//exercicio 5
+
 	int numCycles;
 	void dfsVisit(Vertex<T> *v);
 	void dfsVisit();
 	void getPathTo(Vertex<T> *origin, list<T> &res);
 
-	//exercicio 6
+
 	int ** W;   //weight
 	int ** P;   //path
 
@@ -220,7 +220,6 @@ public:
 	vector<Vertex<T> *> getVertexSet() const;
 	int getNumVertex() const;
 
-	//exercicio 5
 	Vertex<T>* getVertex(const T &v) const;
 	void resetIndegrees();
 	vector<Vertex<T>*> getSources() const;
@@ -230,7 +229,6 @@ public:
 	void unweightedShortestPath(const T &v);
 	bool isDAG();
 
-	//exercicio 6
 	void bellmanFordShortestPath(const T &s);
 	void dijkstraShortestPath(const T &s);
 	void floydWarshallShortestPath();
@@ -238,13 +236,10 @@ public:
 	vector<T> getfloydWarshallPath(const T &origin, const T &dest);
 	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
 
-	//exercicio 8
+
 	Graph<T> clone();
 	void resetEdgeFlow();
 	vector<Vertex<T>*> calculatePrim();
-	//vector<Vertex<T>*> calculateKruskal();
-	//vector<Vertex<T>*> calculateFordFulkerson(T source);
-	//float calculateFordFulkerson(Vertex<T>* current, Vertex<T>* parent, float min, Graph<T>* gf, Graph<T>* gr, vector<Vertex<T>*> visited);
 
 };
 
@@ -815,7 +810,7 @@ Graph<T> Graph<T>::clone() {
 
 template<class T>
 vector<Vertex<T>*> Graph<T>::calculatePrim() {
-
+	
 	for (unsigned int i = 0; i < vertexSet.size(); i++) {
 		vertexSet[i]->path = NULL;
 		vertexSet[i]->dist = INT_INFINITY;

@@ -1,32 +1,37 @@
+/*
+ * Sightseeing.h
+ *
+ *  Created on: Apr 26, 2015
+ *      Author: luiscarvalho
+ */
+
 #ifndef SIGHTSEEING_H_
 #define SIGHTSEEING_H_
 
-#include "Turista.h"
 #include "PoI.h"
 #include "Graph.h"
+#include "Tourist.h"
+#include "Street.h"
 #include <vector>
+#include <string>
 #include <fstream>
 #include <sstream>
-#include <iostream>
+
 
 using namespace std;
 
 class Sightseeing {
 
-	vector<Turista> turistas;
-	vector<PoI> poIs;
-	Graph<PoI> graph;
-
+	vector<PoI> interestPoints;
+	vector<Tourist> tourists;
+	vector<Street> streets;
 
 public:
 
 	Sightseeing();
-	vector<Turista> getTuristas() {return turistas;};
-	vector<PoI> getPoIs() {return poIs;};
-	void addTurista(Turista t) {turistas.push_back(t);};
-	void addPoI(PoI p) { poIs.push_back(p);};
-
 	bool startGraph();
+	bool showGraph();
+
 
 
 };

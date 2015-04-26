@@ -1,26 +1,33 @@
+/*
+ * PoI.h
+ *
+ *  Created on: Apr 26, 2015
+ *      Author: luiscarvalho
+ */
+
 #ifndef POI_H_
 #define POI_H_
 
+#include "Street.h"
+#include "Point.h"
 #include <string>
 
 using namespace std;
 
 class PoI {
-	int x;
-	int y;
+
 	string nome;
+	Point point;
+
 public:
-
-	PoI(int x, int y, string nome) : x(x), y(y), nome(nome){};
-	int getX() {return x;};
-	int getY() {return y;};
-	string getNome() {return nome;};
-
-	bool operator==(PoI& p){
-		if(x == p.getX() && y == p.getY())
-			return true;
-		return false;
+	PoI(string nome, Point p){
+		this->nome = nome;
+		this->point = p;
 	};
+	string getNome() const;
+	double getX() const;
+	double getY() const;
+	bool operator==(const PoI &p);
 
 };
 
